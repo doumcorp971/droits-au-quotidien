@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Générateur de courriers — Tes Droits au Quotidien</title>
+  <meta name="description" content="Génère en 2 minutes un courrier juridique prêt à envoyer : caution, salaire impayé, contravention, harcèlement, plainte... 12 modèles rédigés par des juristes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #111111;
+      --bg2: #1a1a1a;
+      --bg3: #222222;
+      --accent: #E85D04;
+      --accent2: #f97316;
+      --text: #f5f5f5;
+      --text-muted: #888888;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(17,17,17,0.95);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      padding: 60px 24px 48px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(232,93,4,0.12);
+      border: 1px solid rgba(232,93,4,0.3);
+      color: var(--accent);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(38px, 6vw, 64px);
+      line-height: 1.05;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero p {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 12px;
+      line-height: 1.6;
+    }
+
+    .hero-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      opacity: 0.6;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      padding: 20px 24px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* MAIN LAYOUT */
+    .main {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      min-height: calc(100vh - 200px);
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      position: sticky;
+      top: 57px;
+      max-height: calc(100vh - 57px);
+    }
+
+    .sidebar-section {
+      padding: 20px 16px 8px;
+    }
+
+    .sidebar-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      padding: 0 4px;
+    }
+
+    .courrier-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 10px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s;
+      margin-bottom: 2px;
+      position: relative;
+    }
+
+    .courrier-btn:hover { background: rgba(255,255,255,0.05); }
+    .courrier-btn.active { background: rgba(232,93,4,0.12); }
+    .courrier-btn.active .cb-title { color: var(--accent); }
+
+    .cb-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .cb-info { flex: 1; min-width: 0; }
+
+    .cb-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+
+    .cb-cat {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .cb-lock {
+      font-size: 11px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .badge-free {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(34,197,94,0.15);
+      color: #4ade80;
+      border: 1px solid rgba(34,197,94,0.25);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .badge-locked {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(232,93,4,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(232,93,4,0.2);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    /* CONTENT */
+    .content {
+      padding: 32px;
+      max-width: 720px;
+    }
+
+    /* WELCOME SCREEN */
+    .welcome-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .welcome-screen .big-icon {
+      font-size: 52px;
+      margin-bottom: 20px;
+    }
+
+    .welcome-screen h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 26px;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .welcome-screen p {
+      font-size: 15px;
+      max-width: 400px;
+      line-height: 1.6;
+    }
+
+    /* FORM PANEL */
+    .form-panel { display: none; }
+    .form-panel.active { display: block; }
+
+    .panel-header {
+      margin-bottom: 28px;
+    }
+
+    .panel-cat {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .panel-header h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(24px, 3vw, 32px);
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .panel-header p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .ref-legales {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 14px;
+    }
+
+    /* LOCKED PANEL */
+    .locked-panel {
+      background: rgba(232,93,4,0.05);
+      border: 1px solid rgba(232,93,4,0.2);
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .locked-panel .lock-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    .locked-panel h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .locked-panel p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 420px;
+      margin: 0 auto 28px;
+    }
+
+    .locked-list {
+      text-align: left;
+      max-width: 380px;
+      margin: 0 auto 28px;
+      list-style: none;
+    }
+
+    .locked-list li {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .locked-list li:last-child { border-bottom: none; }
+
+    .locked-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .btn-unlock {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-unlock:hover { opacity: 0.85; }
+
+    .unlock-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* FORM FIELDS */
+    .fields-grid {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .field-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .field-group .field-hint {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .field-group input,
+    .field-group textarea {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-size: 14px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+
+    .field-group input:focus,
+    .field-group textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .field-group input::placeholder,
+    .field-group textarea::placeholder {
+      color: rgba(255,255,255,0.2);
+    }
+
+    .field-group textarea { min-height: 80px; }
+
+    .required-star { color: var(--accent); margin-left: 3px; }
+
+    /* GENERATE BTN */
+    .btn-generate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 12px;
+      padding: 18px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+
+    .btn-generate:hover { opacity: 0.9; }
+    .btn-generate:active { transform: scale(0.99); }
+    .btn-generate:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* RESULT */
+    .result-panel {
+      display: none;
+      margin-top: 32px;
+    }
+
+    .result-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .result-header h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      text-transform: uppercase;
+      color: #4ade80;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-download {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 9px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-download:hover { background: rgba(255,255,255,0.1); }
+
+    .result-text {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .result-notice {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: rgba(232,93,4,0.06);
+      border: 1px solid rgba(232,93,4,0.15);
+      border-radius: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .result-notice strong { color: var(--accent); }
+
+    /* BTN EDIT */
+    .btn-edit {
+      margin-top: 12px;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-edit:hover { border-color: var(--text-muted); color: var(--text); }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .main {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .content {
+        padding: 24px 16px;
+      }
+
+      .stats-bar {
+        gap: 20px;
+      }
+
+      .hero {
+        padding: 40px 16px 32px;
+      }
+
+      .result-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://droitsauquotidien.fr" class="nav-logo">Droits<span>.</span>fr</a>
+    <a href="https://payhip.com/b/dBhnc" class="nav-cta" target="_blank" rel="noopener">Guide complet — 27,99€ →</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Outil gratuit — Accès direct</div>
+    <h1>Génère ton<br><span>courrier juridique</span><br>en 2 minutes</h1>
+    <p>Remplis le formulaire. Le courrier se génère instantanément. Copie, adapte, envoie.</p>
+    <p class="hero-note">Modèles rédigés d'après le droit français en vigueur · Non substituable à un conseil d'avocat</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num">12</div>
+      <div class="stat-label">courriers disponibles</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">gratuits sans inscription</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">droit français</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0</div>
+      <div class="stat-label">compte requis</div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">🏠 Logement</div>
+        <button class="courrier-btn active" onclick="selectCourrier('intrusion')" id="btn-intrusion">
+          <div class="cb-icon" style="background:rgba(59,130,246,0.15);">🔑</div>
+          <div class="cb-info">
+            <div class="cb-title">Intrusion du propriétaire</div>
+            <div class="cb-cat">Mise en demeure</div>
+          </div>
+          <div class="cb-lock"><span class="badge-locked">Pack</span></div>
+        </button>
+        <button class="courrier-btn" onclick="selectCourrier('caution')" id="btn-caution">
+          <div class="cb-icon" style="background:rgba(59,130,246,0.15);">💰</div>
+          <div class="cb-info">
+            <div class="cb-title">Restitution de caution</div>
+            <div class="cb-cat">Mise en demeure</div>
+          </div>
+          <div class="cb-lock"><span class="badge-free">Gratuit</span></div>
+        </button>
+        <button class="courrier-btn" onclick="selectCourrier('insalubre')" id="btn-insalubre">
+          <div class="cb-icon" style="background:rgba(59,130,246,0.15);">🔧</div>
+          <div class="cb-info">
+            <div class="cb-title">Logement insalubre / travaux</div>
+            <div class="cb-cat">Mise en demeure</div>
+          </div>
+          <div class="cb-lock"><span class="badge-locked">Pack</span></div>
+        </button>
+        <button class="courrier-btn" onclick="selectCourrier('nuisances')" id="btn-nuisances">
+          <div class="cb-icon" style="background:rgba(59,130,246,0.15);">🔊</div>
+          <div class="cb-info">
+            <div class="cb-title">Nuisances sonores voisin</div>
+            <div class="cb-cat">Courrier amiable</div>
+          </div>
+          <div class="cb-lock"><span class="badge-locked">Pack</span></div>
+        </button>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">💼 Travail</div>
+        <button class="courrier-btn" onclick="selectCourrier('salaire')" id="btn-salaire">
+          <div class="cb-icon" style="background:rgba(232,93,4,0.15);">📄</div>
+          <div class="cb-info">
+            <div class="cb-title">Salaire impayé</div>
+            <div class="cb-cat">Mise en demeure</div>
+          </div>
+          <div class="cb-lock"><span class="badge-free">Gratuit</span></div>
+        </button>
+        <button class="courrier-btn" onclick="selectCourrier('harcelement')" id="btn-harcelement">
+          <div class="cb-icon" style="background:rgba(232,93,4,0.15);">🛡️</div>
+          <div class="cb-info">
+            <div class="cb-title">Harcèlement moral à l'employeur</div>
+            <div class="cb-cat">Signalement</div>
+          </div>
+          <div class="cb-lock"><span class="badge-locked">Pack</span></div>
+        </button>
+        <button class="courrier-btn" onclick="selectCourrier('sanction')" id="btn-sanction">
+          <div class="cb-icon" style="background:rgba(232,93,4,0.15);">⚖️</div>
+          <div class="cb-info">
+            <div class="cb-title">Sanction disciplinaire</div>
+            <div class="cb-cat">Contestation</div>
+          </div>
+          <div class="cb-lock"><span class="badge-locked">Pack</span></div>
+        </button>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">🛣️ Route & Mobilité</div>
+        <button class="courrier-btn" onclick="selectCourrier('amende')" id="btn-amende">
+          <div class="cb-icon" style="background:rgba(234,179,8,0.15);">🚗</div>
+          <div class="cb-info">
+            <div class="cb-title">Contestation contravention</div>
+            <div class="cb-cat">Requête en exonération</div>
+          </div>
+          <div class="cb-lock"><span class="badge-free">Gratuit</span></div>
+        </button>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">📱 Internet & Réseaux</div>
+        <button class="courrier-btn" onclick="selectCourrier('photo')" id="btn-photo">
+          <div class="cb-icon" style="background:rgba(168,85,247,0.15);">📸</div>
+          <div class="cb-info">
+            <div class="cb-title">Retrait photo / vidéo sans accord</div>
+            <div class="cb-cat">Mise en demeure</div>
+          </div>
+          <div class="cb-lock"><span class="badge-locked">Pack</span></div>
+        </button>
+        <button class="courrier-btn" onclick="selectCourrier('intime')" id="btn-intime">
+          <div class="cb-icon" style="background:rgba(168,85,247,0.15);">🔒</div>
+          <div class="cb-info">
+            <div class="cb-title">Contenu intime diffusé (revenge porn)</div>
+            <div class="cb-cat">Mise en demeure</div>
+          </div>
+          <div class="cb-lock"><span class="badge-locked">Pack</span></div>
+        </button>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">💳 Argent & Dettes</div>
+        <button class="courrier-btn" onclick="selectCourrier('commercant')" id="btn-commercant">
+          <div class="cb-icon" style="background:rgba(239,68,68,0.15);">🛍️</div>
+          <div class="cb-info">
+            <div class="cb-title">Litige commerçant</div>
+            <div class="cb-cat">Mise en demeure</div>
+          </div>
+          <div class="cb-lock"><span class="badge-locked">Pack</span></div>
+        </button>
+      </div>
+
+      <div class="sidebar-section" style="padding-bottom:20px;">
+        <div class="sidebar-label">⚖️ Justice & Défense</div>
+        <button class="courrier-btn" onclick="selectCourrier('plainte')" id="btn-plainte">
+          <div class="cb-icon" style="background:rgba(255,255,255,0.06);">📋</div>
+          <div class="cb-info">
+            <div class="cb-title">Plainte au Procureur</div>
+            <div class="cb-cat">Dépôt de plainte</div>
+          </div>
+          <div class="cb-lock"><span class="badge-locked">Pack</span></div>
+        </button>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- INTRUSION — locked -->
+      <div class="form-panel active" id="panel-intrusion">
+        <div class="panel-header">
+          <div class="panel-cat">Logement</div>
+          <h2>Intrusion du propriétaire</h2>
+          <p>Ton propriétaire entre chez toi sans ton accord. Première étape avant plainte.</p>
+          <div class="ref-legales">📚 Art. 226-4 Code pénal · Art. 6 et 4 loi n° 89-462 du 6 juillet 1989</div>
+        </div>
+        <div class="locked-panel">
+          <div class="lock-icon">🔓</div>
+          <h3>Courrier disponible dans le pack</h3>
+          <p>Ce modèle est inclus dans le guide complet <strong>Tes Droits au Quotidien</strong> — 12 courriers prêts à envoyer + 130 fiches juridiques.</p>
+          <ul class="locked-list">
+            <li>Mise en demeure violation de domicile</li>
+            <li>Logement insalubre &amp; travaux non faits</li>
+            <li>Nuisances sonores voisinage</li>
+            <li>Harcèlement moral à l'employeur</li>
+            <li>Sanction disciplinaire injustifiée</li>
+            <li>Retrait photo/vidéo sans accord</li>
+            <li>Revenge porn — contenu intime</li>
+            <li>Litige commerçant remboursement</li>
+            <li>Plainte au Procureur de la République</li>
+          </ul>
+          <a href="https://payhip.com/b/dBhnc" class="btn-unlock" target="_blank" rel="noopener">Obtenir le pack complet — 27,99€ →</a>
+          <p class="unlock-note">Accès immédiat après paiement · PDF téléchargeable</p>
+        </div>
+      </div>
+
+      <!-- CAUTION — gratuit -->
+      <div class="form-panel" id="panel-caution">
+        <div class="panel-header">
+          <div class="panel-cat">Logement</div>
+          <h2>Restitution de caution</h2>
+          <p>Ton ex-propriétaire ne rend pas la caution dans les délais légaux.</p>
+          <div class="ref-legales">📚 Art. 22 loi n° 89-462 du 6 juillet 1989</div>
+        </div>
+        <div class="fields-grid" id="fields-caution"></div>
+        <button class="btn-generate" onclick="generer('caution')">✦ Générer mon courrier</button>
+        <div class="result-panel" id="result-caution">
+          <div class="result-header">
+            <h3>✓ Courrier prêt</h3>
+            <button class="btn-download" onclick="telecharger('caution')">⬇ Télécharger .txt</button>
+          </div>
+          <pre class="result-text" id="text-caution"></pre>
+          <div class="result-notice"><strong>À faire :</strong> Remplacez "___, le" par votre ville · Envoyez en LRAR · Conservez une copie et l'AR · Joignez l'état des lieux de sortie.</div>
+          <button class="btn-edit" onclick="resetPanel('caution')">← Modifier les informations</button>
+        </div>
+      </div>
+
+      <!-- INSALUBRE — locked -->
+      <div class="form-panel" id="panel-insalubre">
+        <div class="panel-header">
+          <div class="panel-cat">Logement</div>
+          <h2>Logement insalubre ou travaux non réalisés</h2>
+          <p>Humidité, chauffage défaillant, installation dangereuse : le propriétaire ne répond pas.</p>
+          <div class="ref-legales">📚 Art. 6 loi du 6 juillet 1989 · Décret n° 2002-120</div>
+        </div>
+        <div class="locked-panel">
+          <div class="lock-icon">🔓</div>
+          <h3>Courrier disponible dans le pack</h3>
+          <p>Inclus dans le guide complet <strong>Tes Droits au Quotidien</strong>.</p>
+          <a href="https://payhip.com/b/dBhnc" class="btn-unlock" target="_blank" rel="noopener">Obtenir le pack complet — 27,99€ →</a>
+          <p class="unlock-note">Accès immédiat · 12 courriers + 130 fiches</p>
+        </div>
+      </div>
+
+      <!-- NUISANCES — locked -->
+      <div class="form-panel" id="panel-nuisances">
+        <div class="panel-header">
+          <div class="panel-cat">Logement</div>
+          <h2>Nuisances sonores voisin</h2>
+          <p>Après un dialogue resté sans effet. Copie au syndic ou au bailleur.</p>
+          <div class="ref-legales">📚 Art. R. 1336-5 Code de la santé publique · Art. R. 623-2 Code pénal</div>
+        </div>
+        <div class="locked-panel">
+          <div class="lock-icon">🔓</div>
+          <h3>Courrier disponible dans le pack</h3>
+          <p>Inclus dans le guide complet <strong>Tes Droits au Quotidien</strong>.</p>
+          <a href="https://payhip.com/b/dBhnc" class="btn-unlock" target="_blank" rel="noopener">Obtenir le pack complet — 27,99€ →</a>
+          <p class="unlock-note">Accès immédiat · 12 courriers + 130 fiches</p>
+        </div>
+      </div>
+
+      <!-- SALAIRE — gratuit -->
+      <div class="form-panel" id="panel-salaire">
+        <div class="panel-header">
+          <div class="panel-cat">Travail</div>
+          <h2>Salaire impayé</h2>
+          <p>Salaire, heures supplémentaires ou primes non versés à l'échéance.</p>
+          <div class="ref-legales">📚 Art. L. 3242-1 · Art. L. 3245-1 Code du travail (prescription 3 ans)</div>
+        </div>
+        <div class="fields-grid" id="fields-salaire"></div>
+        <button class="btn-generate" onclick="generer('salaire')">✦ Générer mon courrier</button>
+        <div class="result-panel" id="result-salaire">
+          <div class="result-header">
+            <h3>✓ Courrier prêt</h3>
+            <button class="btn-download" onclick="telecharger('salaire')">⬇ Télécharger .txt</button>
+          </div>
+          <pre class="result-text" id="text-salaire"></pre>
+          <div class="result-notice"><strong>À faire :</strong> Remplacez "___, le" par votre ville · Envoyez en LRAR · Joignez bulletins de paie et relevés d'heures.</div>
+          <button class="btn-edit" onclick="resetPanel('salaire')">← Modifier les informations</button>
+        </div>
+      </div>
+
+      <!-- HARCELEMENT — locked -->
+      <div class="form-panel" id="panel-harcelement">
+        <div class="panel-header">
+          <div class="panel-cat">Travail</div>
+          <h2>Harcèlement moral à l'employeur</h2>
+          <p>Déclencher l'obligation légale de protection de l'employeur.</p>
+          <div class="ref-legales">📚 Art. L. 1152-1 et s. · Art. L. 4121-1 Code du travail</div>
+        </div>
+        <div class="locked-panel">
+          <div class="lock-icon">🔓</div>
+          <h3>Courrier disponible dans le pack</h3>
+          <p>Inclus dans le guide complet <strong>Tes Droits au Quotidien</strong>.</p>
+          <a href="https://payhip.com/b/dBhnc" class="btn-unlock" target="_blank" rel="noopener">Obtenir le pack complet — 27,99€ →</a>
+          <p class="unlock-note">Accès immédiat · 12 courriers + 130 fiches</p>
+        </div>
+      </div>
+
+      <!-- SANCTION — locked -->
+      <div class="form-panel" id="panel-sanction">
+        <div class="panel-header">
+          <div class="panel-cat">Travail</div>
+          <h2>Contestation d'une sanction disciplinaire</h2>
+          <p>Avertissement ou sanction injustifiée, procédure non respectée.</p>
+          <div class="ref-legales">📚 Art. L. 1331-1 et s. · Art. L. 1333-1 Code du travail</div>
+        </div>
+        <div class="locked-panel">
+          <div class="lock-icon">🔓</div>
+          <h3>Courrier disponible dans le pack</h3>
+          <p>Inclus dans le guide complet <strong>Tes Droits au Quotidien</strong>.</p>
+          <a href="https://payhip.com/b/dBhnc" class="btn-unlock" target="_blank" rel="noopener">Obtenir le pack complet — 27,99€ →</a>
+          <p class="unlock-note">Accès immédiat · 12 courriers + 130 fiches</p>
+        </div>
+      </div>
+
+      <!-- AMENDE — gratuit -->
+      <div class="form-panel" id="panel-amende">
+        <div class="panel-header">
+          <div class="panel-cat">Route &amp; Mobilité</div>
+          <h2>Contestation d'une contravention</h2>
+          <p>Avis de contravention injustifié (radar, stationnement) — requête en exonération.</p>
+          <div class="ref-legales">📚 Art. 529-2 et 530 CPP · Art. L. 121-3 Code de la route</div>
+        </div>
+        <div class="fields-grid" id="fields-amende"></div>
+        <button class="btn-generate" onclick="generer('amende')">✦ Générer mon courrier</button>
+        <div class="result-panel" id="result-amende">
+          <div class="result-header">
+            <h3>✓ Courrier prêt</h3>
+            <button class="btn-download" onclick="telecharger('amende')">⬇ Télécharger .txt</button>
+          </div>
+          <pre class="result-text" id="text-amende"></pre>
+          <div class="result-notice"><strong>À faire :</strong> Envoyez à l'OMP dont l'adresse figure au dos de l'avis · Délai 45 jours · Ne payez PAS l'amende si vous contestez.</div>
+          <button class="btn-edit" onclick="resetPanel('amende')">← Modifier les informations</button>
+        </div>
+      </div>
+
+      <!-- PHOTO — locked -->
+      <div class="form-panel" id="panel-photo">
+        <div class="panel-header">
+          <div class="panel-cat">Internet &amp; Réseaux</div>
+          <h2>Retrait d'une photo ou vidéo sans accord</h2>
+          <p>Quelqu'un a publié ton image sans consentement.</p>
+          <div class="ref-legales">📚 Art. 9 Code civil · Art. 226-1 et 226-8 Code pénal</div>
+        </div>
+        <div class="locked-panel">
+          <div class="lock-icon">🔓</div>
+          <h3>Courrier disponible dans le pack</h3>
+          <p>Inclus dans le guide complet <strong>Tes Droits au Quotidien</strong>.</p>
+          <a href="https://payhip.com/b/dBhnc" class="btn-unlock" target="_blank" rel="noopener">Obtenir le pack complet — 27,99€ →</a>
+          <p class="unlock-note">Accès immédiat · 12 courriers + 130 fiches</p>
+        </div>
+      </div>
+
+      <!-- INTIME — locked -->
+      <div class="form-panel" id="panel-intime">
+        <div class="panel-header">
+          <div class="panel-cat">Internet &amp; Réseaux</div>
+          <h2>Contenu intime diffusé sans accord</h2>
+          <p>Revenge porn — Urgence. Double action : auteur + plainte.</p>
+          <div class="ref-legales">📚 Art. 226-2-1 Code pénal (2 ans · 60 000 €)</div>
+        </div>
+        <div class="locked-panel">
+          <div class="lock-icon">🔓</div>
+          <h3>Courrier disponible dans le pack</h3>
+          <p>Inclus dans le guide complet <strong>Tes Droits au Quotidien</strong>.</p>
+          <a href="https://payhip.com/b/dBhnc" class="btn-unlock" target="_blank" rel="noopener">Obtenir le pack complet — 27,99€ →</a>
+          <p class="unlock-note">Accès immédiat · 12 courriers + 130 fiches</p>
+        </div>
+      </div>
+
+      <!-- COMMERCANT — locked -->
+      <div class="form-panel" id="panel-commercant">
+        <div class="panel-header">
+          <div class="panel-cat">Argent &amp; Dettes</div>
+          <h2>Litige avec un commerçant</h2>
+          <p>Produit défectueux, non conforme ou jamais livré.</p>
+          <div class="ref-legales">📚 Art. L. 217-3 et s. Code de la consommation · Art. L. 216-1</div>
+        </div>
+        <div class="locked-panel">
+          <div class="lock-icon">🔓</div>
+          <h3>Courrier disponible dans le pack</h3>
+          <p>Inclus dans le guide complet <strong>Tes Droits au Quotidien</strong>.</p>
+          <a href="https://payhip.com/b/dBhnc" class="btn-unlock" target="_blank" rel="noopener">Obtenir le pack complet — 27,99€ →</a>
+          <p class="unlock-note">Accès immédiat · 12 courriers + 130 fiches</p>
+        </div>
+      </div>
+
+      <!-- PLAINTE — locked -->
+      <div class="form-panel" id="panel-plainte">
+        <div class="panel-header">
+          <div class="panel-cat">Justice &amp; Défense</div>
+          <h2>Plainte au Procureur de la République</h2>
+          <p>Déposer plainte par courrier, sans passer par le commissariat.</p>
+          <div class="ref-legales">📚 Art. 40 et 15-3 Code de procédure pénale</div>
+        </div>
+        <div class="locked-panel">
+          <div class="lock-icon">🔓</div>
+          <h3>Courrier disponible dans le pack</h3>
+          <p>Inclus dans le guide complet <strong>Tes Droits au Quotidien</strong>.</p>
+          <a href="https://payhip.com/b/dBhnc" class="btn-unlock" target="_blank" rel="noopener">Obtenir le pack complet — 27,99€ →</a>
+          <p class="unlock-note">Accès immédiat · 12 courriers + 130 fiches</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>droitsauquotidien.fr — Informations juridiques vulgarisées, non substituables à un conseil d'avocat.</p>
+    <p style="margin-top:8px;"><a href="https://droitsauquotidien.fr">← Accueil</a> &nbsp;·&nbsp; <a href="https://payhip.com/b/dBhnc">Guide complet 27,99€</a></p>
+  </footer>
+
+  <script>
+    // ======= DATA =======
+    const today = () => new Date().toLocaleDateString('fr-FR');
+    const fmtDate = (d) => {
+      if (!d) return '___';
+      const dt = new Date(d);
+      return isNaN(dt.getTime()) ? d : dt.toLocaleDateString('fr-FR');
+    };
+
+    const COURRIERS = {
+      caution: {
+        fields: [
+          { key: 'prenom_nom', label: 'Ton prénom et nom', placeholder: 'Marie Dupont', type: 'text', required: true },
+          { key: 'adresse_locataire', label: 'Ton adresse actuelle', placeholder: '12 rue des Lilas, 75011 Paris', type: 'text', required: true },
+          { key: 'nom_proprio', label: 'Nom du propriétaire', placeholder: 'M. Bernard Martin', type: 'text', required: true },
+          { key: 'adresse_proprio', label: 'Adresse du propriétaire', placeholder: '45 avenue Foch, 75016 Paris', type: 'text', required: true },
+          { key: 'adresse_logement', label: 'Adresse du logement quitté', placeholder: '8 rue de la Paix, 75002 Paris', type: 'text', required: true },
+          { key: 'date_remise_cles', label: 'Date de remise des clés', placeholder: '15/03/2025', type: 'date', required: true },
+          { key: 'montant_caution', label: 'Montant de la caution (€)', placeholder: '800', type: 'text', required: true },
+          { key: 'date_expiration', label: "Date d'expiration du délai légal", placeholder: '15/05/2025', type: 'date', required: true },
+          { key: 'montant_total', label: 'Montant total réclamé avec majorations (€)', placeholder: '880', type: 'text', required: true },
+          { key: 'iban', label: 'Ton IBAN pour le virement', placeholder: 'FR76 XXXX XXXX XXXX', type: 'text', required: true },
+        ],
+        template: (d) => `${d.prenom_nom}
+${d.adresse_locataire}
+
+${d.nom_proprio}
+${d.adresse_proprio}
+
+Fait à ___, le ${today()}
+
+Lettre recommandée avec accusé de réception
+
+Objet : Mise en demeure de restituer le dépôt de garantie — LRAR
+
+Madame, Monsieur,
+
+J'ai quitté le logement situé ${d.adresse_logement} le ${fmtDate(d.date_remise_cles)}, comme l'atteste l'état des lieux de sortie signé le même jour.
+
+L'article 22 de la loi du 6 juillet 1989 vous impose de restituer le dépôt de garantie de ${d.montant_caution} € dans un délai maximal d'un mois (état des lieux conforme) ou de deux mois (retenues justifiées), déduction faite des sommes justifiées par des devis ou factures.
+
+Ce délai a expiré le ${fmtDate(d.date_expiration)}. À ce jour, je n'ai reçu ni restitution ni justificatif.
+
+Je vous rappelle qu'à défaut de restitution dans les délais, le dépôt de garantie est majoré de plein droit de 10 % du loyer mensuel hors charges pour chaque mois de retard commencé.
+
+Je vous mets donc en demeure de me verser sous 8 jours la somme de ${d.montant_total} €, sur le compte ${d.iban} ou par chèque à l'adresse ci-dessus.
+
+À défaut, je saisirai la commission départementale de conciliation puis le juge des contentieux de la protection, qui pourra y ajouter des dommages et intérêts.
+
+Veuillez agréer, Madame, Monsieur, l'expression de mes salutations distinguées.
+
+${d.prenom_nom}
+
+---
+EN PRATIQUE — Joignez une copie de l'état des lieux de sortie. La saisine de la commission de conciliation est gratuite — mentionnez-la, elle débloque la majorité des dossiers.
+Références légales : Art. 22 loi n° 89-462 du 6 juillet 1989`
+      },
+
+      salaire: {
+        fields: [
+          { key: 'prenom_nom', label: 'Ton prénom et nom', placeholder: 'Jean Martin', type: 'text', required: true },
+          { key: 'adresse', label: 'Ton adresse', placeholder: '5 rue Victor Hugo, 69001 Lyon', type: 'text', required: true },
+          { key: 'nom_employeur', label: 'Nom / raison sociale employeur', placeholder: 'SARL Dupont & Associés', type: 'text', required: true },
+          { key: 'adresse_employeur', label: "Adresse de l'employeur", placeholder: '12 rue du Commerce, 69002 Lyon', type: 'text', required: true },
+          { key: 'date_embauche', label: "Date d'embauche", placeholder: '01/09/2022', type: 'date', required: true },
+          { key: 'poste', label: 'Ton poste / qualification', placeholder: 'Assistant commercial', type: 'text', required: true },
+          { key: 'detail_sommes', label: 'Détail des sommes non versées', placeholder: 'salaire de mai 2025 : 1 850 € ; 12 heures supplémentaires : 320 €', type: 'textarea', required: true },
+          { key: 'montant_total', label: 'Montant total dû (€)', placeholder: '2170', type: 'text', required: true },
+        ],
+        template: (d) => `${d.prenom_nom}
+${d.adresse}
+
+${d.nom_employeur}
+${d.adresse_employeur}
+
+Fait à ___, le ${today()}
+
+Lettre recommandée avec accusé de réception
+
+Objet : Mise en demeure de payer les salaires dus — LRAR
+
+Madame, Monsieur,
+
+Salarié(e) de votre entreprise depuis le ${fmtDate(d.date_embauche)} en qualité de ${d.poste}, je constate que les sommes suivantes ne m'ont pas été versées : ${d.detail_sommes}.
+
+Le salaire doit être payé chaque mois à date régulière (article L. 3242-1 du Code du travail). Son non-paiement constitue un manquement grave à vos obligations contractuelles, ouvrant droit à des dommages et intérêts, et le cas échéant à la prise d'acte de la rupture aux torts de l'employeur.
+
+Je vous mets en demeure de me verser la somme totale de ${d.montant_total} € sous 8 jours.
+
+À défaut, je saisirai le conseil de prud'hommes en référé, procédure rapide prévue précisément pour les salaires impayés, et j'informerai l'inspection du travail.
+
+Veuillez agréer, Madame, Monsieur, l'expression de mes salutations distinguées.
+
+${d.prenom_nom}
+
+---
+EN PRATIQUE — Joignez bulletins de paie et relevés d'heures. Le référé prud'homal aboutit en quelques semaines pour un salaire non contesté. Vous avez 3 ans pour réclamer.
+Références légales : Art. L. 3242-1 · Art. L. 3245-1 Code du travail`
+      },
+
+      amende: {
+        fields: [
+          { key: 'prenom_nom', label: 'Ton prénom et nom', placeholder: 'Sophie Bernard', type: 'text', required: true },
+          { key: 'adresse', label: 'Ton adresse', placeholder: '3 impasse des Roses, 33000 Bordeaux', type: 'text', required: true },
+          { key: 'numero_avis', label: "Numéro de l'avis de contravention", placeholder: 'FR-2025-XXXXXXXX', type: 'text', required: true },
+          { key: 'date_avis', label: "Date de l'avis", placeholder: '20/04/2025', type: 'date', required: true },
+          { key: 'date_faits', label: 'Date des faits reprochés', placeholder: '15/04/2025', type: 'date', required: true },
+          { key: 'lieu_faits', label: 'Lieu des faits', placeholder: 'Paris 15ème, rue du Commerce', type: 'text', required: true },
+          { key: 'infraction', label: 'Infraction reprochée', placeholder: 'excès de vitesse / stationnement interdit', type: 'text', required: true },
+          { key: 'immatriculation', label: 'Immatriculation du véhicule', placeholder: 'AB-123-CD', type: 'text', required: true },
+          { key: 'motif_contestation', label: 'Motif de contestation', placeholder: "Je n'étais pas le conducteur — le véhicule était prêté / les faits sont inexacts", type: 'textarea', required: true },
+          { key: 'consignation', label: 'Montant consignation (€) — laisser vide si non requise', placeholder: '90', type: 'text', required: false },
+        ],
+        template: (d) => `${d.prenom_nom}
+${d.adresse}
+
+Officier du Ministère Public
+[Adresse de l'OMP figurant sur l'avis de contravention]
+
+Fait à ___, le ${today()}
+
+Lettre recommandée avec accusé de réception
+
+Objet : Requête en exonération — avis de contravention n° ${d.numero_avis}
+
+Madame, Monsieur l'Officier du Ministère Public,
+
+J'ai reçu l'avis de contravention n° ${d.numero_avis} daté du ${fmtDate(d.date_avis)}, relevé le ${fmtDate(d.date_faits)} à ${d.lieu_faits}, pour ${d.infraction}, concernant le véhicule immatriculé ${d.immatriculation}.
+
+Je conteste cette contravention pour le motif suivant : ${d.motif_contestation}.
+
+Conformément à l'article 529-2 du Code de procédure pénale, je forme la présente requête en exonération dans le délai de 45 jours.${d.consignation ? ` J'ai procédé à la consignation de ${d.consignation} € — justificatif joint. Je rappelle que la consignation ne vaut pas reconnaissance de l'infraction.` : ''}
+
+Pièces jointes : avis de contravention original, formulaire de requête en exonération.
+
+Veuillez agréer, Madame, Monsieur, l'expression de ma considération distinguée.
+
+${d.prenom_nom}
+
+---
+EN PRATIQUE — Respectez le délai de 45 jours (voir au dos de l'avis ou sur antai.gouv.fr). Ne payez PAS l'amende si vous contestez : le paiement vaut reconnaissance et éteint toute contestation.
+Références légales : Art. 529-2 et 530 CPP · Art. L. 121-3 Code de la route`
+      }
+    };
+
+    // ======= INIT FIELDS =======
+    function initFields() {
+      ['caution', 'salaire', 'amende'].forEach(slug => {
+        const container = document.getElementById('fields-' + slug);
+        if (!container) return;
+        COURRIERS[slug].fields.forEach(f => {
+          const div = document.createElement('div');
+          div.className = 'field-group';
+          const req = f.required ? `<span class="required-star">*</span>` : ' <span style="color:#555;font-size:11px;">(optionnel)</span>';
+          if (f.type === 'textarea') {
+            div.innerHTML = `<label for="f-${slug}-${f.key}">${f.label}${req}</label><textarea id="f-${slug}-${f.key}" placeholder="${f.placeholder}" rows="3"></textarea>`;
+          } else {
+            div.innerHTML = `<label for="f-${slug}-${f.key}">${f.label}${req}</label><input type="${f.type}" id="f-${slug}-${f.key}" placeholder="${f.placeholder}">`;
+          }
+          container.appendChild(div);
+        });
+      });
+    }
+
+    // ======= SELECT COURRIER =======
+    function selectCourrier(slug) {
+      // Deactivate all buttons
+      document.querySelectorAll('.courrier-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('btn-' + slug).classList.add('active');
+      // Hide all panels
+      document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('panel-' + slug).classList.add('active');
+      // Scroll to top on mobile
+      if (window.innerWidth <= 768) {
+        document.querySelector('.content').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // ======= GENERATE =======
+    function generer(slug) {
+      const data = {};
+      COURRIERS[slug].fields.forEach(f => {
+        const el = document.getElementById('f-' + slug + '-' + f.key);
+        data[f.key] = el ? el.value.trim() : '';
+      });
+
+      // Check required
+      const missing = COURRIERS[slug].fields.filter(f => f.required && !data[f.key]);
+      if (missing.length > 0) {
+        const firstMissing = document.getElementById('f-' + slug + '-' + missing[0].key);
+        if (firstMissing) {
+          firstMissing.style.borderColor = '#ef4444';
+          firstMissing.focus();
+          firstMissing.addEventListener('input', () => { firstMissing.style.borderColor = ''; }, { once: true });
+        }
+        return;
+      }
+
+      const texte = COURRIERS[slug].template(data);
+      document.getElementById('text-' + slug).textContent = texte;
+      document.getElementById('result-' + slug).style.display = 'block';
+      document.getElementById('result-' + slug).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ======= DOWNLOAD =======
+    function telecharger(slug) {
+      const texte = document.getElementById('text-' + slug).textContent;
+      const blob = new Blob([texte], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'courrier-' + slug + '-' + new Date().toISOString().split('T')[0] + '.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // ======= RESET =======
+    function resetPanel(slug) {
+      document.getElementById('result-' + slug).style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ======= START =======
+    initFields();
+    selectCourrier('intrusion');
+  </script>
+
+</body>
+</html>
