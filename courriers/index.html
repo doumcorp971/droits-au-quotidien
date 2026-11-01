@@ -953,7 +953,7 @@
             <button class="btn-download" onclick="telecharger('amende')">⬇ Télécharger .txt</button>
           </div>
           <pre class="result-text" id="text-amende"></pre>
-          <div class="result-notice"><strong>À faire :</strong> Envoyez à l'OMP dont l'adresse figure au dos de l'avis · Délai 45 jours · Ne payez PAS l'amende si vous contestez.</div>
+          <div class="result-notice"><strong>À faire :</strong> Envoyez à l'OMP dont l'adresse figure au dos de l'avis · Délai 45 jours · Ne payez PAS l'amende si vous contestez. Radar ou véhicule prêté : désignez le conducteur ou consignez le montant, sinon la requête est irrecevable.</div>
           <button class="btn-edit" onclick="resetPanel('amende')">← Modifier les informations</button>
         </div>
       </div>
@@ -964,7 +964,7 @@
           <div class="panel-cat">Internet &amp; Réseaux</div>
           <h2>Retrait d'une photo ou vidéo sans accord</h2>
           <p>Quelqu'un a publié ton image sans consentement.</p>
-          <div class="ref-legales">📚 Art. 9 Code civil · Art. 226-1 et 226-8 Code pénal</div>
+          <div class="ref-legales">📚 Art. 9 Code civil · Art. 226-1 et 226-2 Code pénal</div>
         </div>
         <div class="locked-panel">
           <div class="lock-icon">🔓</div>
@@ -998,7 +998,7 @@
           <div class="panel-cat">Argent &amp; Dettes</div>
           <h2>Litige avec un commerçant</h2>
           <p>Produit défectueux, non conforme ou jamais livré.</p>
-          <div class="ref-legales">📚 Art. L. 217-3 et s. Code de la consommation · Art. L. 216-1</div>
+          <div class="ref-legales">📚 Art. L. 217-3 et s. et L. 216-1 Code de la consommation</div>
         </div>
         <div class="locked-panel">
           <div class="lock-icon">🔓</div>
@@ -1073,7 +1073,7 @@ Madame, Monsieur,
 
 J'ai quitté le logement situé ${d.adresse_logement} le ${fmtDate(d.date_remise_cles)}, comme l'atteste l'état des lieux de sortie signé le même jour.
 
-L'article 22 de la loi du 6 juillet 1989 vous impose de restituer le dépôt de garantie de ${d.montant_caution} € dans un délai maximal d'un mois (état des lieux conforme) ou de deux mois (retenues justifiées), déduction faite des sommes justifiées par des devis ou factures.
+L'article 22 de la loi du 6 juillet 1989 vous impose de restituer le dépôt de garantie de ${d.montant_caution} € dans un délai maximal de deux mois à compter de la remise des clés, ramené à un mois lorsque l'état des lieux de sortie est conforme à celui d'entrée, déduction faite des sommes justifiées par des devis ou factures.
 
 Ce délai a expiré le ${fmtDate(d.date_expiration)}. À ce jour, je n'ai reçu ni restitution ni justificatif.
 
@@ -1088,7 +1088,7 @@ Veuillez agréer, Madame, Monsieur, l'expression de mes salutations distinguées
 ${d.prenom_nom}
 
 ---
-EN PRATIQUE — Joignez une copie de l'état des lieux de sortie. La saisine de la commission de conciliation est gratuite — mentionnez-la, elle débloque la majorité des dossiers.
+EN PRATIQUE — Joignez une copie de l'état des lieux de sortie. La saisine de la commission de conciliation est gratuite — mentionnez-la, elle peut permettre de débloquer le dossier sans aller au tribunal.
 Références légales : Art. 22 loi n° 89-462 du 6 juillet 1989`
       },
 
@@ -1130,7 +1130,7 @@ Veuillez agréer, Madame, Monsieur, l'expression de mes salutations distinguées
 ${d.prenom_nom}
 
 ---
-EN PRATIQUE — Joignez bulletins de paie et relevés d'heures. Le référé prud'homal aboutit en quelques semaines pour un salaire non contesté. Vous avez 3 ans pour réclamer.
+EN PRATIQUE — Joignez bulletins de paie et relevés d'heures. Le référé prud'homal est une procédure accélérée adaptée à un salaire non contesté. Vous avez 3 ans pour réclamer.
 Références légales : Art. L. 3242-1 · Art. L. 3245-1 Code du travail`
       },
 
@@ -1145,7 +1145,7 @@ Références légales : Art. L. 3242-1 · Art. L. 3245-1 Code du travail`
           { key: 'infraction', label: 'Infraction reprochée', placeholder: 'excès de vitesse / stationnement interdit', type: 'text', required: true },
           { key: 'immatriculation', label: 'Immatriculation du véhicule', placeholder: 'AB-123-CD', type: 'text', required: true },
           { key: 'motif_contestation', label: 'Motif de contestation', placeholder: "Je n'étais pas le conducteur — le véhicule était prêté / les faits sont inexacts", type: 'textarea', required: true },
-          { key: 'consignation', label: 'Montant consignation (€) — laisser vide si non requise', placeholder: '90', type: 'text', required: false },
+          { key: 'consignation', label: 'Montant consignation (€) — obligatoire si radar ou véhicule prêté, sauf si tu désignes le conducteur', placeholder: '90', type: 'text', required: false },
         ],
         template: (d) => `${d.prenom_nom}
 ${d.adresse}
@@ -1174,8 +1174,8 @@ Veuillez agréer, Madame, Monsieur, l'expression de ma considération distingué
 ${d.prenom_nom}
 
 ---
-EN PRATIQUE — Respectez le délai de 45 jours (voir au dos de l'avis ou sur antai.gouv.fr). Ne payez PAS l'amende si vous contestez : le paiement vaut reconnaissance et éteint toute contestation.
-Références légales : Art. 529-2 et 530 CPP · Art. L. 121-3 Code de la route`
+EN PRATIQUE — Respectez le délai de 45 jours (voir au dos de l'avis ou sur antai.gouv.fr). Ne payez PAS l'amende si vous contestez : le paiement vaut reconnaissance et éteint toute contestation. Pour un radar ou un véhicule prêté (art. L. 121-3 Code de la route), joignez la désignation du conducteur OU le justificatif de consignation, sinon la requête est irrecevable (art. 529-10 CPP). La consignation n'est pas un paiement de l'amende.
+Références légales : Art. 529-2, 529-10 et 530 CPP · Art. L. 121-3 Code de la route`
       }
     };
 
@@ -1212,6 +1212,8 @@ Références légales : Art. 529-2 et 530 CPP · Art. L. 121-3 Code de la route`
       }
     }
 
+    const AVERTISSEMENT = "\n\n---\nAvertissement : ce modèle est une information juridique générale (droitsauquotidien.fr), pas un conseil d'avocat. Vérifiez qu'il correspond à votre situation avant envoi.";
+
     // ======= GENERATE =======
     function generer(slug) {
       const data = {};
@@ -1232,7 +1234,7 @@ Références légales : Art. 529-2 et 530 CPP · Art. L. 121-3 Code de la route`
         return;
       }
 
-      const texte = COURRIERS[slug].template(data);
+      const texte = COURRIERS[slug].template(data) + AVERTISSEMENT;
       document.getElementById('text-' + slug).textContent = texte;
       document.getElementById('result-' + slug).style.display = 'block';
       document.getElementById('result-' + slug).scrollIntoView({ behavior: 'smooth', block: 'start' });
