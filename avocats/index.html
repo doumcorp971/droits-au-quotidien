@@ -189,7 +189,7 @@ document.querySelectorAll('.js-form').forEach(a => {
   if (FORM_URL) { a.target = '_blank'; a.rel = 'noopener'; }
 });
 // Exemples : images générées dans exemples/
-const SAMPLES = [];
+const SAMPLES = ['exemples/famille-c1-s01.jpg','exemples/famille-c2-s02.jpg','exemples/famille-c3-s05.jpg','exemples/famille-c4-s07.jpg','exemples/travail-c1-s01.jpg','exemples/travail-c2-s05.jpg','exemples/travail-c3-s02.jpg','exemples/travail-c4-s06.jpg'];
 const box = document.getElementById('samples');
 SAMPLES.forEach(src => { const i = document.createElement('img'); i.src = src; i.alt = 'Exemple de carrousel'; i.loading = 'lazy'; box.appendChild(i); });
 </script>
