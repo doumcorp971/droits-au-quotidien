@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contenus Avocats — publications juridiques prêtes à publier</title>
+<meta name="description" content="Chaque mois, des carrousels, posts LinkedIn et une newsletter clients rédigés pour votre spécialité, vérifiés juridiquement et conformes à la déontologie de l'avocat.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f0; --surface:#ffffff; --ink:#14213d; --text:#2b2f38; --muted:#5d6370;
+  --line:#e4e0d6; --accent:#9a6b2f; --accent-ink:#ffffff; --soft:#efe9dd;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1420; --surface:#161d2c; --ink:#f1ede4; --text:#d9dbe1; --muted:#9aa1ae;
+    --line:#273047; --accent:#d4a35c; --accent-ink:#14213d; --soft:#1d2537;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1420; --surface:#161d2c; --ink:#f1ede4; --text:#d9dbe1; --muted:#9aa1ae;
+  --line:#273047; --accent:#d4a35c; --accent-ink:#14213d; --soft:#1d2537;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+h1,h2,h3{color:var(--ink);font-family:Newsreader,Georgia,serif;font-weight:600;line-height:1.2}
+h1{font-size:clamp(32px,5vw,52px);letter-spacing:-.01em}
+h2{font-size:clamp(26px,3.4vw,36px);margin-bottom:14px}
+h3{font-size:20px;margin-bottom:6px}
+p{max-width:65ch}
+a{color:inherit}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;padding:14px 22px;border-radius:8px;border:0;cursor:pointer;font-size:16px}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+header.top{border-bottom:1px solid var(--line);background:var(--surface)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:20px;color:var(--ink)}
+.logo span{color:var(--accent)}
+.hero{padding:64px 0 48px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.hero p.lead{font-size:19px;color:var(--muted);margin:18px 0 28px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero small{display:block;margin-top:14px;color:var(--muted);font-size:14px}
+section{padding:56px 0;border-top:1px solid var(--line)}
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
+.card p{color:var(--muted);font-size:15px}
+.num{font-family:Newsreader,Georgia,serif;font-size:28px;color:var(--accent);line-height:1;margin-bottom:8px}
+.compare{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:15px}
+.compare th,.compare td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.compare th{background:var(--soft);color:var(--ink);font-weight:600}
+.compare td:first-child{font-weight:600;color:var(--ink)}
+.compare .us{background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.samples{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.samples img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:var(--soft)}
+.price{display:flex;flex-direction:column}
+.price .amount{font-family:Newsreader,Georgia,serif;font-size:40px;color:var(--ink);margin:6px 0}
+.price .amount small{font-size:16px;color:var(--muted);font-family:Inter,sans-serif}
+.price ul{list-style:none;margin:14px 0 22px;flex:1}
+.price li{padding:6px 0 6px 24px;position:relative;font-size:15px}
+.price li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+.price.featured{border:2px solid var(--accent)}
+.tag{display:inline-block;font-size:12px;font-weight:600;background:var(--accent);color:var(--accent-ink);padding:3px 10px;border-radius:99px;align-self:flex-start}
+details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600;color:var(--ink)}
+details p{margin-top:10px;color:var(--muted);font-size:15px}
+.final{text-align:center}
+.final p{margin:10px auto 24px;color:var(--muted)}
+footer{padding:32px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+@media (max-width:600px){ .hero{padding:44px 0 36px} section{padding:44px 0} .btn{width:100%;text-align:center} }
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <div class="logo">Contenus <span>Avocats</span></div>
+  <a class="btn ghost" href="#tarifs" style="padding:9px 14px;font-size:14px">Tarifs</a>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <p class="eyebrow">Pré-lancement</p>
+  <h1>Vos publications LinkedIn et Instagram, prêtes chaque mois.<br>Justes en droit. Conformes à votre déontologie.</h1>
+  <p class="lead">Carrousels, posts et newsletter clients rédigés pour <strong>votre spécialité</strong>, vérifiés article par article, dans le respect de l'article 10 du RIN. Vous relisez, vous publiez : 10 minutes par semaine.</p>
+  <div class="ctas">
+    <a class="btn js-form" href="#">Recevoir un pack d'essai gratuit</a>
+    <a class="btn ghost" href="#exemples">Voir des exemples</a>
+  </div>
+  <small>Aucun paiement aujourd'hui · 1 pack d'essai offert dans votre spécialité</small>
+</div>
+
+<section><div class="wrap">
+  <h2>Publier régulièrement, sans y passer vos soirées</h2>
+  <div class="grid g3" style="margin-top:22px">
+    <div class="card"><div class="num">1</div><h3>Le temps manque</h3><p>Un carrousel soigné, c'est de la recherche, de la rédaction et de la mise en page. Difficile à tenir chaque semaine avec un agenda d'audiences.</p></div>
+    <div class="card"><div class="num">2</div><h3>Les outils génériques se trompent</h3><p>Un texte généré par une IA grand public peut citer un article abrogé ou un délai faux. Sous votre nom, l'erreur vous engage.</p></div>
+    <div class="card"><div class="num">3</div><h3>La déontologie impose des limites</h3><p>Informations sincères, vérifiables, non trompeuses ; pas de promesse de résultat ; pas de démarchage. Une agence non juridique ne les maîtrise pas toujours.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Ce que vous recevez chaque mois</h2>
+  <div class="grid g3" style="margin-top:22px">
+    <div class="card"><h3>4 carrousels</h3><p>Questions que vos clients se posent vraiment, en 6 à 8 visuels, avec la légende rédigée. Format LinkedIn et Instagram.</p></div>
+    <div class="card"><h3>4 posts texte</h3><p>Accroche, développement, appel à l'action sobre. Prêts à copier-coller.</p></div>
+    <div class="card"><h3>1 newsletter clients</h3><p>L'actualité du mois dans votre domaine, expliquée simplement, à envoyer à votre fichier clients (formule Cabinet).</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card"><h3>Vérification juridique systématique</h3><p>Chaque article, délai et montant est contrôlé et sourcé. Les références figurent sous chaque contenu : vous vérifiez en un coup d'œil.</p></div>
+    <div class="card"><h3>Relu au regard de la déontologie</h3><p>Aucune promesse de résultat, aucune mention de « spécialiste » non qualifiée, aucune référence à des dossiers. Vous gardez la validation finale.</p></div>
+  </div>
+</div></section>
+
+<section id="exemples"><div class="wrap">
+  <h2>Exemples</h2>
+  <p style="color:var(--muted);margin-bottom:20px">Extraits du pack de démonstration en droit de la famille et en droit du travail.</p>
+  <div class="samples" id="samples"></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Comparé aux alternatives</h2>
+  <div class="table-scroll" style="margin-top:18px">
+  <table class="compare">
+    <thead><tr><th></th><th>Le faire soi-même</th><th>Agence ou rédacteur</th><th class="us">Contenus Avocats</th></tr></thead>
+    <tbody>
+      <tr><td>Coût mensuel</td><td>Votre temps</td><td>300 à 1 600 € HT</td><td class="us">49 à 89 € HT</td></tr>
+      <tr><td>Exactitude juridique</td><td>Vous</td><td>Variable</td><td class="us">Vérifiée et sourcée</td></tr>
+      <tr><td>Déontologie</td><td>Vous</td><td>Rarement maîtrisée</td><td class="us">Intégrée à la rédaction</td></tr>
+      <tr><td>Votre temps</td><td>Élevé</td><td>Réunions, briefs</td><td class="us">10 min / semaine</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div></section>
+
+<section id="tarifs"><div class="wrap">
+  <h2>Tarifs de lancement</h2>
+  <p style="color:var(--muted);margin-bottom:22px">Sans engagement. Résiliable à tout moment. Aucun paiement avant l'ouverture.</p>
+  <div class="grid g2">
+    <div class="card price">
+      <h3>Essentiel</h3>
+      <div class="amount">49 € <small>HT / mois</small></div>
+      <ul><li>1 spécialité</li><li>4 carrousels + 4 posts par mois</li><li>Références juridiques sous chaque contenu</li><li>Visuels prêts à publier + textes modifiables</li></ul>
+      <a class="btn ghost js-form" href="#" data-plan="essentiel">Réserver ma place</a>
+    </div>
+    <div class="card price featured">
+      <span class="tag">Recommandé</span>
+      <h3 style="margin-top:8px">Cabinet</h3>
+      <div class="amount">89 € <small>HT / mois</small></div>
+      <ul><li>Jusqu'à 2 spécialités</li><li>4 carrousels + 4 posts par mois</li><li>1 newsletter clients mensuelle</li><li>Visuels à vos couleurs et à votre logo</li></ul>
+      <a class="btn js-form" href="#" data-plan="cabinet">Réserver ma place</a>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap" style="max-width:760px">
+  <h2>Questions fréquentes</h2>
+  <details><summary>Qui rédige les contenus ?</summary><p>Un rédacteur spécialisé en vulgarisation juridique, assisté d'outils d'IA, avec un contrôle systématique de chaque référence (article, délai, montant). Vous restez seul juge de ce que vous publiez sous votre nom.</p></details>
+  <details><summary>Les contenus sont-ils exclusifs ?</summary><p>Les contenus sont communs aux abonnés d'une même spécialité. La formule Cabinet les adapte à votre identité visuelle, et vous pouvez modifier chaque texte librement.</p></details>
+  <details><summary>Quelles spécialités sont disponibles ?</summary><p>Au lancement : droit de la famille et droit du travail. Indiquez votre domaine lors de l'inscription : les prochaines spécialités ouvriront selon la demande.</p></details>
+  <details><summary>Est-ce compatible avec mes obligations déontologiques ?</summary><p>Les contenus sont informatifs, sans promesse de résultat, sans mention de clients ni de dossiers, sans comparaison avec d'autres confrères. La relecture finale vous appartient, comme pour toute communication publiée sous votre nom.</p></details>
+  <details><summary>Que se passe-t-il quand je réserve ma place ?</summary><p>Vous recevez un pack d'essai gratuit dans votre spécialité, puis une invitation à l'ouverture. Aucun paiement n'est demandé avant.</p></details>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2>Recevez un pack d'essai dans votre spécialité</h2>
+  <p>Un carrousel, un post et un extrait de newsletter, offerts. Jugez sur pièce.</p>
+  <a class="btn js-form" href="#">Recevoir mon pack d'essai</a>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  Contenus Avocats — nom provisoire, service en pré-lancement. Les contenus fournis sont des informations juridiques générales destinées à être relues et validées par l'avocat qui les publie ; ils ne constituent pas une consultation juridique.
+</div></footer>
+
+<script>
+// Lien du formulaire d'inscription (Tally, Brevo formulaire hébergé…) — à renseigner. Ne jamais mettre de clé API ici.
+const FORM_URL = '';
+document.querySelectorAll('.js-form').forEach(a => {
+  const plan = a.dataset.plan ? (FORM_URL.includes('?') ? '&' : '?') + 'formule=' + a.dataset.plan : '';
+  a.href = FORM_URL ? FORM_URL + plan : 'mailto:?subject=Pack%20d%27essai%20Contenus%20Avocats';
+  if (FORM_URL) { a.target = '_blank'; a.rel = 'noopener'; }
+});
+// Exemples : images générées dans exemples/
+const SAMPLES = [];
+const box = document.getElementById('samples');
+SAMPLES.forEach(src => { const i = document.createElement('img'); i.src = src; i.alt = 'Exemple de carrousel'; i.loading = 'lazy'; box.appendChild(i); });
+</script>
+</body>
+</html>
